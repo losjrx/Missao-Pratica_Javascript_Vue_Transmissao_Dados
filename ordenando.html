@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css"/>
+	<script src="exemplosjs/ordenando.js"></script>
+	<script>
+		function add(){
+			let valor = document.getElementById("valor").value;
+
+			if(valor != ""){
+				let lista = document.getElementById("valores");
+				var novoItem = document.createElement("li");
+				novoItem.textContent = valor;
+				lista.appendChild(novoItem);
+				document.getElementById("valor").value = "";
+			}
+		
+		}
+
+		function ordenar(){
+			let lista = document.getElementById("valores").children;
+			array = [];
+
+			for(let i = 0; i < lista.length; i++){
+				array[i] = eval(lista[i].innerHTML);
+			}
+			
+			var indiceSelecionado = document.getElementById("options").value;
+
+			if(indiceSelecionado == "1"){
+				array = bubble_sort(array);
+				console.log(array);
+				return
+			}
+			if(indiceSelecionado == "2"){
+				
+			}
+			if(indiceSelecionado == "3"){
+				
+			}
+		}
+
+		function misturar(){
+
+		}
+	</script>
+	<title>Ordenação numérica</title>
+</head>
+<body>
+	<div id="principal">
+		<h1>Ordenando Valores</h1>
+		<div id="entrada-dados">
+			<label for="valor">Valor:</label>
+			<input type="number" name="valor" id="valor" placeholder="Digite um número inteiro">
+			<button onclick="add()">Adicionar</button>
+		</div>
+		<hr>
+
+		<div id="tipo-ordenacao">
+			<select id="options">
+				<option value="1" selected>Blubble Sort</option>
+				<option value="2">Selection Sort</option>
+				<option value="3">Quick Sort</option>
+			</select>
+
+			<button onclick="ordenar()">Ordenar</button>
+			<button>Misturar</button>
+		</div>
+		<hr>
+		
+		<div id="lista">
+			<ul id="valores">
+				
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>
