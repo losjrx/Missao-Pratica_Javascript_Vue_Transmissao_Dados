@@ -32,19 +32,44 @@
 
 			if(indiceSelecionado == "1"){
 				array = bubble_sort(array);
-				console.log(array);
+				inserirArray(array);
 				return
 			}
 			if(indiceSelecionado == "2"){
-				
+				array = selection_sort(array);
+				inserirArray(array);
+				return
 			}
 			if(indiceSelecionado == "3"){
-				
+				array = quickSort(array, 0, array.length -1);
+				inserirArray(array);
+				return
 			}
 		}
 
-		function misturar(){
+		function inserirArray(array){
+			let lista = document.getElementById("valores");
+			lista.innerHTML = "";
+			array.map((item) => {
+				let novoItem = document.createElement("li");
+				novoItem.textContent = item;
+				lista.appendChild(novoItem);
+			});
+		}
 
+		function misturar(){
+			let lista = document.getElementById("valores").children;
+			lista = Array.from(lista)
+			let vetor = [];
+
+			for(let elem of lista){
+				vetor.push(eval(elem.innerHTML));
+			}
+
+			shuffle(vetor);
+
+			inserirArray(vetor);
+			
 		}
 	</script>
 	<title>Ordenação numérica</title>
@@ -67,7 +92,7 @@
 			</select>
 
 			<button onclick="ordenar()">Ordenar</button>
-			<button>Misturar</button>
+			<button onclick="misturar()">Misturar</button>
 		</div>
 		<hr>
 		
